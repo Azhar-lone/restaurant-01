@@ -31,17 +31,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-       <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-          <Container>
-            <Header />
-            {children}
-            <Footer />
-          </Container>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+
+          <Container>{children}</Container>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

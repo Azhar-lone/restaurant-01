@@ -25,14 +25,14 @@ const HomeSection = () => {
   return (
     <section
       id="home"
-      className="pt-32 flex flex-col md:flex-row items-center justify-between px-8 pb-32 w-[95%] "
+      className="pt-32 flex flex-col md:flex-row items-center justify-center px-8 pb-32 w-[95%] gap-10"
     >
       <div className=" h-full flex-1 w-full">
         <h2 className="text-5xl text-sunset font-bold mb-4">
           Satisfy Your Cravings <br />
           Anytime, Anywhere
         </h2>
-        <p className="text-lg text-lightColor mb-6">
+        <p className="text-lg text-lightColor mb-6  ">
           Craving something delicious? We&apos;ve got you covered. Freshly
           prepared meals, delivered right to your doorstep.
         </p>
@@ -43,7 +43,7 @@ const HomeSection = () => {
         height={1024}
         src={image}
         alt="Food"
-        className="h-full md:w-[35%] scale-90 hover:scale-100  md:scale-100 md:hover:scale-105 cursor-pointer rounded object-cover"
+        className="h-full md:w-[35%] scale-100 hover:scale-105 cursor-pointer rounded object-cover"
         style={{
           animation: "rotate 5s linear infinite",
         }}

@@ -43,7 +43,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 text-foreground bg-background shadow-lg z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-2 ">
+      <div className="max-w-[1440px] mx-auto flex justify-between items-center py-4 px-2 ">
         <Link href="/" className="md:text-2xl font-extrabold text-primary">
           TastyCornerCafe
         </Link>
