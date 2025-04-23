@@ -137,11 +137,8 @@
   body {
     @apply bg-secondary 
   }
-}
 
-@layer base {
-
-  body {
-    @apply bg-secondary ;
+  button{
+    @apply cursor-pointer
   }
 }

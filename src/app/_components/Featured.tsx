@@ -1,5 +1,5 @@
 import { HeartIcon } from "lucide-react";
-
+import Image from "next/image";
 const LIMIT = 100;
 const FeaturedSection = () => {
   return (
@@ -10,9 +10,11 @@ const FeaturedSection = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 ">
         {cards.map((card: CardType, index: number) => (
           <div className="bg-background p-4 rounded shadow" key={index}>
-            <img
+            <Image
               src={card.image}
               alt={card.title}
+              width={1024}
+              height={1024}
               className="mx-auto w-24 h-24 rounded-full shadow mb-4"
             />
             <h1 className="text-center font-bold text-lg">{card.title}</h1>
@@ -22,7 +24,9 @@ const FeaturedSection = () => {
                 : card.description}
             </p>
             <div className="flex justify-between ">
-              <span className="font-semibold">${card.price}</span>
+              <span className="text-xl font-bold text-primary">
+                ${card.price}
+              </span>
               <HeartIcon />
             </div>
           </div>
