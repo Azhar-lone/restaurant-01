@@ -48,7 +48,7 @@ const Header = () => {
             <Link
               key={link.href}
               href={link.href}
-              className="text-lg font-medium text-gray-600 hover:text-red-400 hover:border-b-2 hover:border-sunset transition duration-300 px-3 py-2 rounded-lg"
+              className={`text-lg font-medium text-gray-600 ${ navActive? "order-sunset text-red-400 ":"hover:text-red-400 hover:border-b-2 hover:border-sunset" }   transition duration-300 px-3 py-2 rounded-lg`}
             >
               {link.name}
             </Link>
