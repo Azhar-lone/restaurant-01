@@ -9,7 +9,7 @@ import {
   LucideIcon,
   MenuIcon,
 } from "lucide-react";
-
+import { ModeToggle } from "./theme-mode";
 const Header = () => {
   const [searchActive, setSearchActive] = useState<boolean>(false);
   const [hash, setHash] = useState<string>("");
@@ -42,13 +42,11 @@ const Header = () => {
   }, [open, setOpen]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white shadow-lg z-50">
+    <header className="fixed top-0 left-0 right-0 text-foreground bg-background shadow-lg z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-2 ">
-        <Link href="/" className="md:text-2xl font-extrabold text-red-400">
+        <Link href="/" className="md:text-2xl font-extrabold text-primary">
           TastyCornerCafe
         </Link>
-
-      
 
         <nav className="hidden md:flex space-x-6">
           {nanLinks.map((link) => (
@@ -56,10 +54,10 @@ const Header = () => {
               key={link.href}
               href={link.href}
               onClick={() => setHash(link.href)}
-              className={`text-lg font-medium text-gray-600 ${
+              className={`text-lg font-medium text-foreground ${
                 link.href === hash
-                  ? "order-sunset text-red-400 "
-                  : "hover:text-red-400 hover:border-b-2 hover:border-sunset"
+                  ? "border-primary border-b-2 text-primary "
+                  : "hover:text-primary hover:border-b-2 hover:border-primary"
               }   transition duration-300 px-3 py-2 rounded-lg`}
             >
               {link.name}
@@ -67,12 +65,15 @@ const Header = () => {
           ))}
         </nav>
         <div className="flex items-center space-x-4 ">
+          <ModeToggle />
           {navicons.map(({ Icon, onClick }, index) => (
             <Icon
               key={index}
               onClick={onClick ?? (() => {})}
               className={`${
-                Icon === MenuIcon ? " md:hidden stroke-background":"stroke-red-400  hover:stroke-red-500"
+                Icon === MenuIcon
+                  ? " md:hidden stroke-foreground"
+                  : "stroke-primary/70  hover:stroke-primary"
               }  cursor-pointer stroke-2 `}
             />
           ))}
@@ -80,43 +81,42 @@ const Header = () => {
       </div>
 
       {searchActive && (
-        <div className="absolute top-20 right-6 bg-white shadow-xl p-3 rounded-lg flex items-center space-x-2 transition duration-300">
+        <div className="absolute top-20 right-6 bg-background shadow-xl p-3 rounded-lg flex items-center space-x-2 transition duration-300">
           <input
             type="text"
             placeholder="Search..."
-            className="border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-jellyBeanBlue"
+            className="border  p-2 rounded focus:outline-none focus:ring-2 "
             autoFocus
           />
           <button
             onClick={() => setSearchActive(false)}
-            className="text-xl text-gray-600 hover:text-sunset transition-colors duration-300"
+            className="text-xl  hover:text-sunset transition-colors duration-300"
           >
             &times;
           </button>
         </div>
       )}
 
-{open && (
-          <div className="md:hidden bg-white shadow-lg transition-colors">
-            <nav className="flex flex-col space-y-2 px-6 py-4">
-              {nanLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setHash(link.href)}
-                  className={`text-lg font-medium text-gray-600 ${
-                    link.href === hash
-                      ? "order-sunset text-red-400 "
-                      : "hover:text-red-400 hover:border-b-2 hover:border-sunset"
-                  }   transition duration-300 px-3 py-2 rounded-lg`}
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </nav>
-          </div>
-        )}
-
+      {open && (
+        <div className="md:hidden bg-background shadow-lg transition-colors">
+          <nav className="flex flex-col space-y-2 px-6 py-4">
+            {nanLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setHash(link.href)}
+                className={`text-lg font-medium text-foreground${
+                  link.href === hash
+                    ? "border-primary text-primary "
+                    : "hover:text-primary hover:border-b-2 hover:border-primary"
+                }   transition duration-300 px-3 py-2 rounded-lg`}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 };

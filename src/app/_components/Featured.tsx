@@ -1,12 +1,12 @@
 const FeaturedSection = () => {
     return (
       <section className="py-16 px-8  ">
-        <h3 className="text-center text-3xl text-red-400 mb-8">
+        <h3 className="text-center text-3xl text-primary mb-8">
           Featured Flavours
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {/* Card 1 */}
-          <div className="bg-white p-4 rounded shadow">
+          <div className="bg-background p-4 rounded shadow">
             <img
               src="/images/image2.png"
               alt="Beef Delight Burger"
@@ -26,7 +26,7 @@ const FeaturedSection = () => {
           </div>
   
           {/* Card 2 */}
-          <div className="bg-white p-4 rounded shadow">
+          <div className="bg-background p-4 rounded shadow">
             <img
               src="/images/image3.png"
               alt="Chicken Cutlet with fries"
@@ -48,7 +48,7 @@ const FeaturedSection = () => {
           </div>
   
           {/* Card 3 */}
-          <div className="bg-white p-4 rounded shadow">
+          <div className="bg-background p-4 rounded shadow">
             <img
               src="/images/image4.png"
               alt="Beef Lovers Pizza"
@@ -68,7 +68,7 @@ const FeaturedSection = () => {
           </div>
   
           {/* Card 4 */}
-          <div className="bg-white p-4 rounded shadow">
+          <div className="bg-background p-4 rounded shadow">
             <img
               src="/images/image5.png"
               alt="Chicken Tonkatsu Ramen"

@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+
 const ImageLinks = [
   "/images/image1.png",
   "/images/image5.png",
@@ -15,7 +17,7 @@ const HomeSection = () => {
       setIndex((prev) => (prev + 1) % ImageLinks.length);
     }, 3000);
 
-    return () => clearInterval(interval); // cleanup
+    return () => clearInterval(interval);
   }, []);
 
   const image = ImageLinks[index];
@@ -31,12 +33,10 @@ const HomeSection = () => {
           Anytime, Anywhere
         </h2>
         <p className="text-lg text-lightColor mb-6">
-          Craving something delicious? We&apos;ve got you covered. Freshly prepared
-          meals, delivered right to your doorstep.
+          Craving something delicious? We&apos;ve got you covered. Freshly
+          prepared meals, delivered right to your doorstep.
         </p>
-        <button className="bg-red-400 text-white px-6 py-3 rounded hover:bg-red-500 transition cursor-pointer">
-          Discover Food
-        </button>
+        <Button className="py-6 text-lg">Discover Food</Button>
       </div>
       <Image
         width={1024}
@@ -45,7 +45,7 @@ const HomeSection = () => {
         alt="Food"
         className="h-full md:w-[35%] scale-90 hover:scale-100  md:scale-100 md:hover:scale-105 cursor-pointer rounded object-cover"
         style={{
-          animation: "rotate 5s linear infinite"
+          animation: "rotate 5s linear infinite",
         }}
       />
     </section>

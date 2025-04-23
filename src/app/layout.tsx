@@ -4,6 +4,8 @@ import "./globals.css";
 import Container from "@/components/myUi/Container";
 import Header from "@/components/myUi/Header";
 import Footer from "@/components/myUi/Footer";
+import { ThemeProvider } from "@/hooks/theme-provider";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,11 +31,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Container>
-          <Header />
-          {children}
-          <Footer />
-        </Container>
+       <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+          <Container>
+            <Header />
+            {children}
+            <Footer />
+          </Container>
+        </ThemeProvider>
       </body>
     </html>
   );
