@@ -3,6 +3,7 @@ import FeaturedSection from "./_components/Featured";
 import DishesSection from "./_components/Dishes";
 import AboutSection from "./_components/About";
 import MenuSection from "./_components/MenuSection";
+// import OrderSection from "./_components/Order";
 
 const Home = () => {
   return (
@@ -12,6 +13,9 @@ const Home = () => {
       <DishesSection />
       <AboutSection />
       <MenuSection />
+
+      {/* <OrderSection /> */}
+
     </div>
   );
 };
