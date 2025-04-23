@@ -1,18 +1,16 @@
+import RatingStars from "@/components/myUi/Ratings";
+import { Button } from "@/components/ui/button";
 import React from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { HeartIcon, EyeIcon } from "lucide-react";
-import RatingStars from "@/components/myUi/Ratings";
-
-const DishesSection = () => {
+const MenuSection = () => {
   return (
-    <section id="dishes" className="py-16 px-8">
-      <h3 className="text-center text-2xl text-foreground/60">Our Dishes</h3>
+    <section id="menu" className="py-16 px-8">
+      <h3 className="text-center text-2xl  mb-4">Our Menu</h3>
       <h1 className="text-center text-3xl text-primary uppercase mb-8">
-        Popular Dishes
+        Today's Delights
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {dishes.map((dish: DishCardType, index: number) => (
           <div
             className="group relative bg-background rounded-xl overflow-hidden shadow-lg transition-transform transform hover:scale-105"
@@ -28,7 +26,7 @@ const DishesSection = () => {
               />
               <div className="absolute inset-0 bg-background  opacity-0 group-hover:opacity-50 transition-opacity"></div>
               <div className="absolute top-3 left-3 flex space-x-2">
-                <Button className="bg-background text-foreground  " >
+                <Button className="bg-background text-foreground  ">
                   <HeartIcon />
                 </Button>
                 <Button className="bg-background text-foreground">
@@ -58,7 +56,7 @@ const DishesSection = () => {
   );
 };
 
-export default DishesSection;
+export default MenuSection;
 
 interface DishCardType {
   image: string;
