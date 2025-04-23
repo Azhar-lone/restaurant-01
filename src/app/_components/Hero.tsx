@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-
 const ImageLinks = [
   "/images/image1.png",
   "/images/image5.png",
@@ -44,9 +43,9 @@ const HomeSection = () => {
         height={1024}
         src={image}
         alt="Food"
-        className="h-full w-[35%]  rounded object-cover"
+        className="h-full md:w-[35%] scale-90 hover:scale-100  md:scale-100 md:hover:scale-105 cursor-pointer rounded object-cover"
         style={{
-          animation: "rotate 5s linear infinite",
+          animation: "rotate 5s linear infinite"
         }}
       />
     </section>

@@ -1,6 +1,6 @@
 "use client";
 
-import {useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import {
   SearchIcon,
@@ -10,10 +10,10 @@ import {
   MenuIcon,
 } from "lucide-react";
 
+import { useHash } from "@/hooks/useHash";
 const Header = () => {
-  const [navActive, setNavActive] = useState<boolean>(false);
   const [searchActive, setSearchActive] = useState<boolean>(false);
-
+  const hash = useHash();
   interface NavIcons {
     Icon: LucideIcon;
     onClick?: () => void;
@@ -32,14 +32,13 @@ const Header = () => {
     },
     {
       Icon: MenuIcon,
-      onClick: () => setNavActive((prev) => !prev),
     },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white shadow-lg z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
-        <Link href="/" className="text-2xl font-extrabold text-red-400">
+      <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-2 ">
+        <Link href="/" className="md:text-2xl font-extrabold text-red-400">
           TastyCornerCafe
         </Link>
 
@@ -48,7 +47,11 @@ const Header = () => {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-lg font-medium text-gray-600 ${ navActive? "order-sunset text-red-400 ":"hover:text-red-400 hover:border-b-2 hover:border-sunset" }   transition duration-300 px-3 py-2 rounded-lg`}
+              className={`text-lg font-medium text-gray-600 ${
+                link.href === hash
+                  ? "order-sunset text-red-400 "
+                  : "hover:text-red-400 hover:border-b-2 hover:border-sunset"
+              }   transition duration-300 px-3 py-2 rounded-lg`}
             >
               {link.name}
             </Link>
@@ -59,7 +62,9 @@ const Header = () => {
             <Icon
               key={index}
               onClick={onClick ?? (() => {})}
-              className={`${Icon === MenuIcon && " md:hidden"} stroke-red-400  hover:stroke-red-500 cursor-pointer`}
+              className={`${
+                Icon === MenuIcon && " md:hidden"
+              } stroke-red-400  hover:stroke-red-500 cursor-pointer`}
             />
           ))}
         </div>
