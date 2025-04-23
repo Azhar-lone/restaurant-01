@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   SearchIcon,
@@ -10,10 +10,10 @@ import {
   MenuIcon,
 } from "lucide-react";
 
-import { useHash } from "@/hooks/useHash";
 const Header = () => {
   const [searchActive, setSearchActive] = useState<boolean>(false);
-  const hash = useHash();
+  const [hash, setHash] = useState<string>("");
+  const [open, setOpen] = useState<boolean>(false);
   interface NavIcons {
     Icon: LucideIcon;
     onClick?: () => void;
@@ -32,8 +32,14 @@ const Header = () => {
     },
     {
       Icon: MenuIcon,
+      onClick: () => setOpen((previous) => !previous),
     },
   ];
+  useEffect(() => {
+    if (window.innerWidth > 768) {
+      setOpen(false);
+    }
+  }, [open, setOpen]);
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white shadow-lg z-50">
@@ -42,11 +48,14 @@ const Header = () => {
           TastyCornerCafe
         </Link>
 
+      
+
         <nav className="hidden md:flex space-x-6">
           {nanLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
+              onClick={() => setHash(link.href)}
               className={`text-lg font-medium text-gray-600 ${
                 link.href === hash
                   ? "order-sunset text-red-400 "
@@ -63,8 +72,8 @@ const Header = () => {
               key={index}
               onClick={onClick ?? (() => {})}
               className={`${
-                Icon === MenuIcon && " md:hidden"
-              } stroke-red-400  hover:stroke-red-500 cursor-pointer`}
+                Icon === MenuIcon ? " md:hidden stroke-background":"stroke-red-400  hover:stroke-red-500"
+              }  cursor-pointer stroke-2 `}
             />
           ))}
         </div>
@@ -86,6 +95,28 @@ const Header = () => {
           </button>
         </div>
       )}
+
+{open && (
+          <div className="md:hidden bg-white shadow-lg transition-colors">
+            <nav className="flex flex-col space-y-2 px-6 py-4">
+              {nanLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setHash(link.href)}
+                  className={`text-lg font-medium text-gray-600 ${
+                    link.href === hash
+                      ? "order-sunset text-red-400 "
+                      : "hover:text-red-400 hover:border-b-2 hover:border-sunset"
+                  }   transition duration-300 px-3 py-2 rounded-lg`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        )}
+
     </header>
   );
 };
