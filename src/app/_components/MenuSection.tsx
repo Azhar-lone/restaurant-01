@@ -8,7 +8,7 @@ const MenuSection = () => {
     <section id="menu" className="py-16 px-8">
       <h3 className="text-center text-2xl  mb-4">Our Menu</h3>
       <h1 className="text-center text-3xl text-primary uppercase mb-8">
-        Today's Delights
+        Today&aposs Delights
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {dishes.map((dish: DishCardType, index: number) => (
